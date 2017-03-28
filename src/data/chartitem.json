@@ -1,0 +1,32 @@
+{
+  "data": [
+      {
+        "id": "1",
+        "title": "XX管理",
+        "icon": "md-copy",
+        "color":"#FF9800",
+        "total":"1000"
+      },
+      {
+        "id": "2",
+        "title": "XXXX",
+        "icon": "md-filing",
+        "color":"#3BC935",
+        "total":"1000"
+      },
+      {
+        "id": "3",
+        "title": "XXX",
+        "icon": "md-finger-print",
+        "color":"#DB2F37",
+        "total":"1000"
+      },
+      {
+        "id": "4",
+        "title": "XX",
+        "icon": "md-images",
+        "color":"#FF625D",
+        "total":"1000"
+      }
+  ]
+}
