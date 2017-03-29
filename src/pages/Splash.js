@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Dimensions, Animated } from 'react-native';
+import { Dimensions, Animated,View ,StatusBar} from 'react-native';
 import store from 'react-native-simple-store';
 
 const contextTypes = {
@@ -46,14 +46,19 @@ class Splash extends React.Component {
 
   render() {
     return (
-      <Animated.Image
-        style={{
-          width: maxWidth,
-          height: maxHeight,
-          transform: [{ scale: this.state.bounceValue }]
-        }}
-        source={splashImg}
-      />
+      <View>
+          <StatusBar
+              hidden={true}
+          />
+          <Animated.Image
+              style={{
+                  width: maxWidth,
+                  height: maxHeight,
+                  transform: [{ scale: this.state.bounceValue }]
+              }}
+              source={splashImg}
+          />
+      </View>
     );
   }
 }

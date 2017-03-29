@@ -3,22 +3,74 @@
  */
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
-    Image,
-    ListView,
-    Alert
+    StatusBar
 } from 'react-native';
+
+//第三方组件
+import Icon from 'react-native-vector-icons/Ionicons';
+
+//自定义
+import Css from '@config/Css';
+import Size from '@config/Size';
+import GridSectionView from '@components/GridSectionView';
+
+//模拟数据
+let appitemdatajson = require ('@data/appitem.json')
 /**
  *
  */
 export default class Apps extends Component {
+    constructor(props) {
+        super(props);
+        this.getAppItem = this.getAppItem.bind(this);
+        this.state = {
+            appItemData:{
+                data:[]
+            }
+        };
+    }
+
+    componentDidMount() {
+        this.setState({
+            appItemData:appitemdatajson
+        })
+    }
+
+    getAppItem(item){
+        return (
+            <View style={[Css.ROW_CONTAINER,Css.SPACE_AROUND,Css.CHART_ITEM]}
+                  key={item.id}
+            >
+                <View>
+                    <Text>{item.title}</Text>
+                    <Text>{item.total}</Text>
+                </View>
+                <Icon
+                    color={item.color}
+                    name={item.icon}
+                    size={35}
+                />
+            </View>
+        )
+    }
+
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={[{color: "red"}]}>测试界面</Text>
+            <View style={Css.CANTAINER}>
+                <StatusBar
+                    backgroundColor="#5044EA"
+                    barStyle="light-content"
+                />
+
+                <GridSectionView
+                    items={this.state.appItemData.data}
+                    renderItem={this.getAppItem}
+                    itemsPerRow={4}
+                />
+
             </View>
         );
     }

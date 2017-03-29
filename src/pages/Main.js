@@ -7,7 +7,8 @@ import {
     ScrollView,
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    StatusBar
 } from 'react-native';
 
 //第三方组件
@@ -22,6 +23,7 @@ import Size from '@config/Size';
 import SwiperItem from '@components/SwiperItem';
 import LoadingView from '@components/LoadingView';
 import GridView from '@components/GridView';
+import PieChart from '@components/PieChart';
 
 //模拟数据
 let swiperdatajson = require ('@data/swiper.json')
@@ -129,6 +131,10 @@ export default class Main extends Component {
     render() {
         return (
             <ScrollView style={Css.CANTAINER}>
+                <StatusBar
+                    backgroundColor="blue"
+                    barStyle="light-content"
+                />
 
                 <Swiper
                     autoplay={true}
@@ -159,7 +165,9 @@ export default class Main extends Component {
                     </View>
                     <View style={Css.HORIZONTAL_BORDER}></View>
                     <View style={[Css.ROW_CONTAINER]}>
-                        <View style={[Css.CHART_LEFT]}><Text>图图表</Text></View>
+                        <View style={[Css.CHART_LEFT]}>
+                            <PieChart size={Size.screen.heightQuarter-21}/>
+                        </View>
                         <View style={[Css.CHART_RIGHT]}>
                             <GridView
                                 items={this.state.chartItemData.data}
@@ -170,7 +178,17 @@ export default class Main extends Component {
                     </View>
                 </View>
 
-
+                <View style={[Css.CHART_VIEW]}>
+                    <View style={Css.CHART_TITLE_VIEW}>
+                        <Text style={Css.CHART_TITLE}>任务下发</Text>
+                    </View>
+                    <View style={Css.HORIZONTAL_BORDER}></View>
+                    <GridView
+                        items={this.state.chartItemData.data}
+                        renderItem={this.getChartItem}
+                        itemsPerRow={2}
+                    />
+                </View>
 
             </ScrollView>
         );

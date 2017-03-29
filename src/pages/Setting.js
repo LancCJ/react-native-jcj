@@ -9,7 +9,7 @@ import {
     View,
     Image,
     ListView,
-    Alert
+    Alert,StatusBar
 } from 'react-native';
 /**
  *
@@ -18,6 +18,10 @@ export default class Setting extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <StatusBar
+                    backgroundColor="#5044EA"
+                    barStyle="light-content"
+                />
                 <Text style={[{color: "red"}]}>测试界面</Text>
             </View>
         );
